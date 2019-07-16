@@ -1,7 +1,7 @@
 resource "aws_s3_bucket" "mod" {
   count = "${var.create_api_gateway}"
 
-  bucket = "udacity-${var.stream_name}-event-backup"
+  bucket = "${var.stream_name}-event-backup"
   acl    = "private"
 }
 
