@@ -30,6 +30,6 @@ variable "lambda_s3_key" {
   default = ""
 }
 
-output "invoke_url" {
-  value = "${aws_api_gateway_deployment.mod.invoke_url}"
-}
+# output "invoke_url" {
+#   value = "${aws_api_gateway_deployment.mod.invoke_url}"
+# }
