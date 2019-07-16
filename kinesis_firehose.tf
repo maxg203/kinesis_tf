@@ -7,10 +7,10 @@ resource "aws_s3_bucket" "mod" {
 
 resource "aws_kinesis_firehose_delivery_stream" "mod" {
   depends_on = [
+    "aws_s3_bucket.mod"
+    "aws_iam_role.firehose_role",
     "aws_cloudwatch_log_stream.mod",
     "aws_cloudwatch_log_group.mod",
-    "aws_iam_role.firehose_role",
-    "aws_s3_bucket.mod"
   ]
 
   name  = "${var.stream_name}-backup"
