@@ -6,6 +6,7 @@ resource "aws_s3_bucket" "mod" {
 }
 
 resource "aws_kinesis_firehose_delivery_stream" "mod" {
+  depends_on = ["aws_cloudwatch_log_group.mod"]
   name  = "${var.stream_name}-backup"
   count = "${var.create_api_gateway}"
 
