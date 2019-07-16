@@ -239,6 +239,8 @@ EOF
 }
 
 resource "aws_iam_role_policy" "firehose_policy" {
+  depends_on = ["aws_s3_bucket.mod"]
+
   name  = "${var.stream_name}-firehose-policy"
   count = "${var.create_s3_backup}"
   role  = "${aws_iam_role.firehose_role.id}"
