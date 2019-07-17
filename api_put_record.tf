@@ -25,20 +25,20 @@ resource "aws_api_gateway_integration" "put_record" {
   passthrough_behavior    = "WHEN_NO_TEMPLATES"
   credentials             = "${aws_iam_role.gateway_execution_role.arn}"
 
-  request_parameters = {
-    "integration.request.header.Content-Type" = "'application/x-amz-json-1.1'"
-  }
+  # request_parameters = {
+  #   "integration.request.header.Content-Type" = "'application/x-amz-json-1.1'"
+  # }
 
-  # Passthrough the JSON response
-  request_templates {
-    "application/json" = <<EOF
+  # # Passthrough the JSON response
+  # request_templates {
+  #   "application/json" = <<EOF
 {
-    "StreamName": "$input.params('stream-name')",
-    "Data": "$util.base64Encode($input.json('$.data'))",
-    "PartitionKey": $input.json('$.partition-key')
+  #   "StreamName": "$input.params('stream-name')",
+  #   "Data": "$util.base64Encode($input.json('$.data'))",
+  #   "PartitionKey": $input.json('$.partition-key')
 }
-EOF
-  }
+EO# F
+  # }
 }
 
 resource "aws_api_gateway_method_response" "put_record_ok" {
