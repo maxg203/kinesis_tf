@@ -13,7 +13,7 @@ resource "aws_kinesis_stream" "mod" {
     "IteratorAgeMilliseconds",
   ]
 
-  tags {
-    ForwardToFirehoseStream = "${var.create_s3_backup ? join("",aws_kinesis_firehose_delivery_stream.mod.*.name) : ""}"
-  }
+  # tags {
+  #   ForwardToFirehoseStream = "${var.create_s3_backup ? join("",aws_kinesis_firehose_delivery_stream.mod.*.name) : ""}"
+  # }
 }

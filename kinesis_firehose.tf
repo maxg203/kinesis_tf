@@ -5,27 +5,27 @@ resource "aws_s3_bucket" "mod" {
   acl    = "private"
 }
 
-resource "aws_kinesis_firehose_delivery_stream" "mod" {
-  depends_on = [
-    "aws_s3_bucket.mod",
-    "aws_iam_role.firehose_role",
-    "aws_cloudwatch_log_stream.mod",
-    "aws_cloudwatch_log_group.mod"
-  ]
-
-  name  = "${var.stream_name}-backup"
-  count = "${var.create_api_gateway}"
-
-  destination = "s3"
-
-  s3_configuration {
-    role_arn   = "${aws_iam_role.firehose_role.arn}"
-    bucket_arn = "${aws_s3_bucket.mod.arn}"
-
-    cloudwatch_logging_options {
-      enabled         = "true"
-      log_group_name  = "${aws_cloudwatch_log_group.mod.name}"
-      log_stream_name = "${aws_cloudwatch_log_stream.mod.name}"
-    }
-  }
-}
+# resource "aws_kinesis_firehose_delivery_stream" "mod" {
+#   depends_on = [
+#     "aws_s3_bucket.mod",
+#     "aws_iam_role.firehose_role",
+#     "aws_cloudwatch_log_stream.mod",
+#     "aws_cloudwatch_log_group.mod"
+#   ]
+#
+#   name  = "${var.stream_name}-backup"
+#   count = "${var.create_api_gateway}"
+#
+#   destination = "s3"
+#
+#   s3_configuration {
+#     role_arn   = "${aws_iam_role.firehose_role.arn}"
+#     bucket_arn = "${aws_s3_bucket.mod.arn}"
+#
+#     cloudwatch_logging_options {
+#       enabled         = "true"
+#       log_group_name  = "${aws_cloudwatch_log_group.mod.name}"
+#       log_stream_name = "${aws_cloudwatch_log_stream.mod.name}"
+#     }
+#   }
+# }
