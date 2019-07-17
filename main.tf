@@ -4,6 +4,10 @@ variable "create_api_gateway" {
   default = false
 }
 
+variable "api_key_required" {
+  default = true
+}
+
 variable "create_s3_backup" {
   default = true
 }

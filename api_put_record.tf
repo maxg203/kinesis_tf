@@ -11,7 +11,7 @@ resource "aws_api_gateway_method" "put_record" {
   resource_id      = "${aws_api_gateway_resource.record.id}"
   http_method      = "PUT"
   authorization    = "NONE"
-  api_key_required = true
+  api_key_required = "${var.api_key_required}"
 }
 
 resource "aws_api_gateway_integration" "put_record" {
