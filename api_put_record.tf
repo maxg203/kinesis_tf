@@ -32,12 +32,12 @@ resource "aws_api_gateway_integration" "put_record" {
   # # Passthrough the JSON response
   # request_templates {
   #   "application/json" = <<EOF
-{
+  # {
   #   "StreamName": "$input.params('stream-name')",
   #   "Data": "$util.base64Encode($input.json('$.data'))",
   #   "PartitionKey": $input.json('$.partition-key')
-}
-EO# F
+  # }
+  # EOF
   # }
 }
 
